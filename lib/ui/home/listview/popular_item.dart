@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_db/data/model/popular/popular.dart';
+import 'package:movie_db/ui/movie_detail/movie_detail_page.dart';
 
 class PopularItem extends StatelessWidget {
   final Popular movie;
@@ -15,10 +16,10 @@ class PopularItem extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => DetailScreen(movie.id)),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MovieDetailPage(idMovie: movie.id ?? -1)),
+              );
             },
             child: Expanded(
               child: Row(
@@ -48,7 +49,7 @@ class PopularItem extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 10, top: 20),
+                            padding: const EdgeInsets.only(bottom: 10),
                             child: Text(
                               movie.title ?? "",
                               style: const TextStyle(fontSize: 22),
